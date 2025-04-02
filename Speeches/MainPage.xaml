@@ -7,10 +7,11 @@
     <!-- Custom Splash screen -->
     <Grid BackgroundColor="White">
         <skia:SKLottieView x:Name="SplashAnimation"
-                        Source="speech.json"
-                        AnimationCompleted="OnAnimationCompleted"
-                        VerticalOptions="Fill"
-                        HorizontalOptions="Fill"
-                        IsAnimationEnabled="True"/>
+                           AnimationFailed="OnAnimationCompleted"
+                           Source="speech.json"
+                           AnimationCompleted="OnAnimationCompleted"
+                           VerticalOptions="Fill"
+                           HorizontalOptions="Fill"
+                           IsAnimationEnabled="True"/>
     </Grid>
 </ContentPage>

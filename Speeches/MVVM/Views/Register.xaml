@@ -41,7 +41,7 @@
                      Stroke="{StaticResource Primary Color}"
                      StrokeThickness="1"
                      StrokeShape="RoundRectangle, 20"
-                     Padding="15,10,10,0">
+                     Padding="15,10,10,10">
                     <VerticalStackLayout>
                         <Label
                              Text="Email Address"
@@ -50,6 +50,7 @@
                         <HorizontalStackLayout
                             Spacing="5">
                             <Entry
+                                 Text="{Binding User.Email}"
                                  VerticalOptions="Center"
                                  HorizontalOptions="Fill"
                                  Placeholder="Username@gmail.com"
@@ -63,7 +64,7 @@
                      Stroke="{StaticResource Primary Color}"
                      StrokeThickness="1"
                      StrokeShape="RoundRectangle, 20"
-                     Padding="15,10,10,0">
+                     Padding="15,10,10,10">
                     <VerticalStackLayout>
                         <Label
                              Text="Username"
@@ -72,6 +73,7 @@
                         <HorizontalStackLayout
                             Spacing="5">
                             <Entry
+                                 Text="{Binding User.Username}"
                                  VerticalOptions="Center"
                                  HorizontalOptions="Fill"
                                  Placeholder="MyUsername"
@@ -85,7 +87,7 @@
                      StrokeThickness="1"
                      Stroke="{StaticResource Primary Color}"
                      StrokeShape="RoundRectangle, 20"
-                     Padding="15,10,10,0">
+                     Padding="15,10,10,10">
                     <VerticalStackLayout>
                         <Label
                             Text="Password"
@@ -94,6 +96,7 @@
                         <HorizontalStackLayout
                             Spacing="5">
                             <Entry
+                                 Text="{Binding User.Password}"
                                  IsPassword="True"
                                  Placeholder="Password"
                                  VerticalOptions="Center"
@@ -107,7 +110,7 @@
                      StrokeThickness="1"
                      Stroke="{StaticResource Primary Color}"
                      StrokeShape="RoundRectangle, 20"
-                     Padding="15,10,10,0">
+                     Padding="15,10,10,10">
                     <VerticalStackLayout>
                         <Label
                             Text="Confirm Password"
@@ -116,8 +119,9 @@
                         <HorizontalStackLayout
                             Spacing="5">
                             <Entry
+                                 Text="{Binding confirmPassword}"
                                  IsPassword="True"
-                                 Placeholder="Password"
+                                 Placeholder="Confirm"
                                  VerticalOptions="Center"
                                  TextColor="{StaticResource Font Dark}"/>
                         </HorizontalStackLayout>
@@ -129,12 +133,12 @@
                 <Button
                      Text="Create Account"
                      FontSize="Large"
-                     Clicked="CreateAccount"
+                     Command="{Binding RegisterCommand}"
                      TextColor="{StaticResource Font Light}"
                      Background="{StaticResource Secondary Color}"/>
                 <!--#endregion-->
                 <!--#region Create an account | Forgot password-->
-                <HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="5">
                     <Label
                          VerticalTextAlignment="Center"
                          Text="Already have an account? "
@@ -146,7 +150,12 @@
                          Text="Login"
                          TextColor="{StaticResource Font Dark}"
                          Padding="0"
-                         Margin="0"/>
+                         Margin="0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="Login"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </HorizontalStackLayout>
                 <!--#endregion-->
             </StackLayout>
@@ -158,7 +167,7 @@
             <Label
                  HorizontalTextAlignment="Center"
                  TextColor="Gray"
-                 FontSize="Medium"
+                 FontSize="Small"
                  Text="Speeches.com"/>
             <Label
                  HorizontalTextAlignment="Center"

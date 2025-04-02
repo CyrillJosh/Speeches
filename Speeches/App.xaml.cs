@@ -8,7 +8,7 @@ namespace Speeches
         {
             InitializeComponent();
 
-            MainPage = new Login();
+            MainPage = new MainPage();
         }
     }
 }

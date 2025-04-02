@@ -26,7 +26,6 @@ namespace Speeches.MVVM.ViewModels
                 {
                     return;
                 }
-
                 //Add the User
                 FakeDatabase.DB_Users.Add(User);
                 Application.Current.MainPage = new Home();
@@ -38,7 +37,6 @@ namespace Speeches.MVVM.ViewModels
         {
             if(User.Password == cp)
                 return true;
-
             return false;
         }
     }

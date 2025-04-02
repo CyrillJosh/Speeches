@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using SkiaSharp.Views.Maui.Controls.Hosting;
+using Speeches.Handlers;
 
 namespace Speeches
 {
@@ -7,6 +8,7 @@ namespace Speeches
     {
         public static MauiApp CreateMauiApp()
         {
+            FormHandler.RemoveBorders();
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
@@ -17,7 +19,6 @@ namespace Speeches
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                     fonts.AddFont("fontello.ttf", "Icons");
                 });
-
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif

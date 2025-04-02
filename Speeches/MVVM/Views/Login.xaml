@@ -41,17 +41,14 @@
             <StackLayout
                 Spacing="20"
                 Margin="0,35">
-                <!--#region Email/Username-->
+                <!--#region Username-->
                 <Border
+                    x:Name="Border"
                     Stroke="{StaticResource Primary Color}"
                     StrokeThickness="1"
                     StrokeShape="RoundRectangle, 20"
-                    Padding="15,10,10,0">
+                    Padding="15,10,10,10">
                     <VerticalStackLayout>
-                        <Label
-                            Text="Username"
-                            FontSize="15"
-                            TextColor="{StaticResource Font Dark}"/>
                         <HorizontalStackLayout
                             Spacing="5">
                             <Image>
@@ -66,7 +63,6 @@
                             <Entry
                                 Text="{Binding User.Username}"
                                 VerticalOptions="Center"
-                                HorizontalOptions="Fill"
                                 Placeholder="Username"
                                 TextColor="{StaticResource Font Dark}"/>
                         </HorizontalStackLayout>
@@ -78,12 +74,8 @@
                     StrokeThickness="1"
                     Stroke="{StaticResource Primary Color}"
                     StrokeShape="RoundRectangle, 20"
-                    Padding="15,10,10,0">
+                    Padding="15,10,10,10">
                     <VerticalStackLayout>
-                        <Label
-                             Text="Password"
-                             FontSize="15"
-                             TextColor="{StaticResource Font Dark}"/>
                         <HorizontalStackLayout
                             Spacing="5">
                             <Image>
@@ -97,7 +89,7 @@
                             </Image>
                             <Entry
                                 Text="{Binding User.Password}"
-                                IsPassword="True"
+                                IsPassword="{Binding IsChecked, Source={x:Reference ShowPassword}}"
                                 Placeholder="Password"
                                 VerticalOptions="Center"
                                 TextColor="{StaticResource Font Dark}"/>
@@ -113,7 +105,8 @@
                     Background="{StaticResource Secondary Color}"/>
                 <!--#endregion-->
                 <!--#region Create an account | Forgot password-->
-                <Grid>
+                <Grid
+                    Padding="10,0">
                     <Label
                         VerticalTextAlignment="Center"
                         Text="Create an account"
@@ -125,18 +118,15 @@
                                 Tapped="Register_Tapped"/>
                         </Label.GestureRecognizers>
                     </Label>
-                    <Label
-                        VerticalTextAlignment="Center"
-                        HorizontalOptions="End"
-                        Text="Forgot Password?"
-                        TextColor="{StaticResource Font Dark}"
-                        Padding="0"
-                        Margin="0"> 
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer
-                                Tapped="ForgotPassword_Tapped"/>
-                        </Label.GestureRecognizers>
-                    </Label>
+                    <HorizontalStackLayout
+                        HorizontalOptions="End">
+                        <CheckBox
+                            x:Name="ShowPassword"
+                            IsChecked="True"/>
+                        <Label
+                            Text="Show Password"
+                            VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
                 </Grid>
                 <!--#endregion-->
             </StackLayout>
@@ -148,7 +138,7 @@
             <Label
                 HorizontalTextAlignment="Center"
                 TextColor="Gray"
-                FontSize="Medium"
+                FontSize="Small"
                 Text="Speeches.com"/>
             <Label
                 HorizontalTextAlignment="Center"
