@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Speeches.MVVM.Views.Login"
+             Title="Login"
+             Background="#f1f1f1">
+    <ContentPage.Resources>
+        <!--#region Colors-->
+        <Color x:Key="Primary Color">#b21a00</Color>
+        <Color x:Key="Secondary Color">#16a637</Color>
+        <!--#endregion-->
+
+        <!--#region Fonts -->
+        <!--Temporary Colors-->
+        <Color x:Key="Font Light">White</Color>
+        <Color x:Key="Font Dark">Black</Color>
+        <!--#endregion-->
+    </ContentPage.Resources>
+    <Grid>
+
+        <VerticalStackLayout
+            Padding="20">
+            <!--#region Logo and Name -->
+            <Image
+                Source="logo.png"
+                HeightRequest="175"
+                Margin="0,0,0,0"/>
+            <Label
+                Text="Welcome to"
+                Margin="0,-5"
+                TextColor="{StaticResource Font Dark}"
+                HorizontalTextAlignment="Center"/>
+            <Label
+                Text="SPEECHES" 
+                TextColor="{StaticResource Font Dark}"
+                FontSize="45"
+                HorizontalTextAlignment="Center"
+                FontAttributes="Bold"/>
+            <!--#endregion-->
+            <!--#region Login Form -->
+            <StackLayout
+                Spacing="20"
+                Margin="0,35">
+                <!--#region Email/Username-->
+                <Border
+                    Stroke="{StaticResource Primary Color}"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle, 20"
+                    Padding="15,10,10,0">
+                    <VerticalStackLayout>
+                        <Label
+                            Text="Username"
+                            FontSize="15"
+                            TextColor="{StaticResource Font Dark}"/>
+                        <HorizontalStackLayout
+                            Spacing="5">
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource
+                                        Color="{StaticResource Primary Color}"
+                                        Size="20"
+                                        FontFamily="Icons"
+                                        Glyph="&#xCC01;"/>
+                                </Image.Source>
+                            </Image>
+                            <Entry
+                                Text="{Binding User.Username}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Fill"
+                                Placeholder="Username"
+                                TextColor="{StaticResource Font Dark}"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+                <!--#endregion-->
+                <!--#region Password-->
+                <Border
+                    StrokeThickness="1"
+                    Stroke="{StaticResource Primary Color}"
+                    StrokeShape="RoundRectangle, 20"
+                    Padding="15,10,10,0">
+                    <VerticalStackLayout>
+                        <Label
+                             Text="Password"
+                             FontSize="15"
+                             TextColor="{StaticResource Font Dark}"/>
+                        <HorizontalStackLayout
+                            Spacing="5">
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource
+                                     Color="{StaticResource Primary Color}"
+                                     Size="20"
+                                     FontFamily="Icons"
+                                     Glyph="&#xCC02;"/>
+                                </Image.Source>
+                            </Image>
+                            <Entry
+                                Text="{Binding User.Password}"
+                                IsPassword="True"
+                                Placeholder="Password"
+                                VerticalOptions="Center"
+                                TextColor="{StaticResource Font Dark}"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+                <!--#endregion-->
+                <!--#region Login-->
+                <Button
+                    Text="Login"
+                    Command="{Binding LoginCommand}"
+                    TextColor="{StaticResource Font Light}"
+                    Background="{StaticResource Secondary Color}"/>
+                <!--#endregion-->
+                <!--#region Create an account | Forgot password-->
+                <Grid>
+                    <Label
+                        VerticalTextAlignment="Center"
+                        Text="Create an account"
+                        TextColor="{StaticResource Font Dark}"
+                        Padding="0"
+                        Margin="0"> 
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="Register_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="End"
+                        Text="Forgot Password?"
+                        TextColor="{StaticResource Font Dark}"
+                        Padding="0"
+                        Margin="0"> 
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="ForgotPassword_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+                <!--#endregion-->
+            </StackLayout>
+            <!--#endregion-->
+        </VerticalStackLayout>
+        <StackLayout
+            VerticalOptions="End"
+            Margin="40">
+            <Label
+                HorizontalTextAlignment="Center"
+                TextColor="Gray"
+                FontSize="Medium"
+                Text="Speeches.com"/>
+            <Label
+                HorizontalTextAlignment="Center"
+                TextColor="Gray"
+                FontSize="Small"
+                Text="2025"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>
