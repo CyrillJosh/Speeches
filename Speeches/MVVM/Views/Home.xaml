@@ -4,7 +4,22 @@
              x:Class="Speeches.MVVM.Views.Home"
              Title="Home">
     <Grid>
-        <Label
-            Text="This is the HomePage"/>
+        <HorizontalStackLayout>
+            <!--Welcome label-->
+            <Label
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Text="Welcome: "/>
+            <Label 
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Text="{Binding Username}"/>
+
+            <!--Test Button-->
+            <Button
+                BackgroundColor="Green"
+                Text="Return"
+                Clicked="Test"/>
+        </HorizontalStackLayout>
     </Grid>
 </ContentPage>
