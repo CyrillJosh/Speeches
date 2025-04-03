@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Speeches.MVVM.Views.Home"
              Title="Home">
-    <VerticalStackLayout>
-        <!--UI-->
-    </VerticalStackLayout>
+    <Grid>
+        <Label
+            Text="This is the HomePage"/>
+    </Grid>
 </ContentPage>

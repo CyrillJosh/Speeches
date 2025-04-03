@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Speeches.MVVM.Views.Register"
-             Title="Register">
+             Title="Register"
+             Background="#f1f1f1">
     <ContentPage.Resources>
         <!--#region Colors-->
         <Color x:Key="Primary Color">#b21a00</Color>
@@ -43,17 +44,23 @@
                      StrokeShape="RoundRectangle, 20"
                      Padding="15,10,10,10">
                     <VerticalStackLayout>
-                        <Label
-                             Text="Email Address"
-                             FontSize="15"
-                             TextColor="{StaticResource Font Dark}"/>
                         <HorizontalStackLayout
                             Spacing="5">
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource
+                                        Color="{StaticResource Primary Color}"
+                                        Size="20"
+                                        FontFamily="Icons"
+                                        Glyph="&#xCC03;"/>
+                                </Image.Source>
+                            </Image>
                             <Entry
                                  Text="{Binding User.Email}"
                                  VerticalOptions="Center"
+                                 WidthRequest="{Binding Source={RelativeSource AncestorType={x:Type HorizontalStackLayout}}, Path=Width}"
                                  HorizontalOptions="Fill"
-                                 Placeholder="Username@gmail.com"
+                                 Placeholder="My@Email.com"
                                  TextColor="{StaticResource Font Dark}"/>
                         </HorizontalStackLayout>
                     </VerticalStackLayout>
@@ -66,15 +73,21 @@
                      StrokeShape="RoundRectangle, 20"
                      Padding="15,10,10,10">
                     <VerticalStackLayout>
-                        <Label
-                             Text="Username"
-                             FontSize="15"
-                             TextColor="{StaticResource Font Dark}"/>
                         <HorizontalStackLayout
                             Spacing="5">
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource
+                                        Color="{StaticResource Primary Color}"
+                                        Size="20"
+                                        FontFamily="Icons"
+                                        Glyph="&#xCC01;"/>      
+                                </Image.Source>
+                            </Image>
                             <Entry
                                  Text="{Binding User.Username}"
                                  VerticalOptions="Center"
+                                 WidthRequest="{Binding Source={RelativeSource AncestorType={x:Type HorizontalStackLayout}}, Path=Width}"
                                  HorizontalOptions="Fill"
                                  Placeholder="MyUsername"
                                  TextColor="{StaticResource Font Dark}"/>
@@ -89,15 +102,21 @@
                      StrokeShape="RoundRectangle, 20"
                      Padding="15,10,10,10">
                     <VerticalStackLayout>
-                        <Label
-                            Text="Password"
-                            FontSize="15"
-                            TextColor="{StaticResource Font Dark}"/>
                         <HorizontalStackLayout
                             Spacing="5">
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource
+                                        Color="{StaticResource Primary Color}"
+                                        Size="20"
+                                        FontFamily="Icons"
+                                        Glyph="&#xCC02;"/>
+                                </Image.Source>
+                            </Image>
                             <Entry
                                  Text="{Binding User.Password}"
-                                 IsPassword="True"
+                                 IsPassword="{Binding IsChecked, Source={x:Reference ShowPassword}}"
+                                 WidthRequest="{Binding Source={RelativeSource AncestorType={x:Type HorizontalStackLayout}}, Path=Width}"
                                  Placeholder="Password"
                                  VerticalOptions="Center"
                                  TextColor="{StaticResource Font Dark}"/>
@@ -112,15 +131,21 @@
                      StrokeShape="RoundRectangle, 20"
                      Padding="15,10,10,10">
                     <VerticalStackLayout>
-                        <Label
-                            Text="Confirm Password"
-                            FontSize="15"
-                            TextColor="{StaticResource Font Dark}"/>
                         <HorizontalStackLayout
                             Spacing="5">
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource
+                                        Color="{StaticResource Primary Color}"
+                                        Size="20"
+                                        FontFamily="Icons"
+                                        Glyph="&#xCC04;"/>
+                                </Image.Source>
+                            </Image>
                             <Entry
                                  Text="{Binding confirmPassword}"
-                                 IsPassword="True"
+                                 IsPassword="{Binding IsChecked, Source={x:Reference ShowPassword}}"
+                                 WidthRequest="{Binding Source={RelativeSource AncestorType={x:Type HorizontalStackLayout}}, Path=Width}"
                                  Placeholder="Confirm"
                                  VerticalOptions="Center"
                                  TextColor="{StaticResource Font Dark}"/>
@@ -138,25 +163,40 @@
                      Background="{StaticResource Secondary Color}"/>
                 <!--#endregion-->
                 <!--#region Create an account | Forgot password-->
-                <HorizontalStackLayout Spacing="5">
-                    <Label
-                         VerticalTextAlignment="Center"
-                         Text="Already have an account? "
-                         TextColor="{StaticResource Font Dark}"
-                         Padding="0"
-                         Margin="0"/>
-                    <Label
-                         VerticalTextAlignment="Center"
-                         Text="Login"
-                         TextColor="{StaticResource Font Dark}"
-                         Padding="0"
-                         Margin="0">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer
-                                Tapped="Login"/>
-                        </Label.GestureRecognizers>
-                    </Label>
-                </HorizontalStackLayout>
+                <Grid>
+                    <HorizontalStackLayout 
+                        Spacing="5"
+                        HorizontalOptions="Start">
+                        <Label
+                             VerticalTextAlignment="Center"
+                             Text="Already have an account? "
+                             TextColor="{StaticResource Font Dark}"
+                             Padding="0"
+                             Margin="0"/>
+                        <Label
+                             VerticalTextAlignment="Center"
+                             Text="Login"
+                             TextColor="{StaticResource Primary Color}"
+                             Padding="0"
+                             Margin="0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Tapped="Login"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </HorizontalStackLayout>                                                                                                                                                     
+                    <HorizontalStackLayout
+                        HorizontalOptions="End">
+                        <CheckBox
+                            Color="{StaticResource Secondary Color}"
+                            x:Name="ShowPassword"
+                            IsChecked="True"/>
+                        <Label
+                            TextColor="Black"
+                            Text="Hide Password"
+                            VerticalOptions="Center"/>  
+                    </HorizontalStackLayout>
+                </Grid>
                 <!--#endregion-->
             </StackLayout>
             <!--#endregion-->

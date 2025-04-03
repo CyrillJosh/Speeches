@@ -21,14 +21,6 @@ namespace Speeches.MVVM.ViewModels
         //Constructors
         public LoginVM()
         {
-            //Custom User
-            Database.FakeDatabase.DB_Users.Add(new User()
-            {
-                Email = "capua@gmail.com",
-                Username = "CharlesBIOT",
-                Password = "123123"
-            });
-
             //Login
             LoginCommand = new Command(() =>
             {
@@ -37,6 +29,7 @@ namespace Speeches.MVVM.ViewModels
                 if(string.IsNullOrEmpty(User.Username) || string.IsNullOrEmpty(User.Password))
                 {
                     //Code here
+                    Application.Current.MainPage.DisplayAlert("Error!", "Please Fill all the Fields", "Okay");
                     return;
                 }
 
@@ -44,14 +37,15 @@ namespace Speeches.MVVM.ViewModels
                 var lstuser = Database.FakeDatabase.DB_Users;
                 //Get User
                 var user = lstuser.FirstOrDefault(x => x.Username == User.Username && x.Password == User.Password);
-                if (user is not null)
+                //Error User not found!
+                if (user is null)
                 {
-                    Application.Current.MainPage = new Home();
+                    Application.Current.MainPage.DisplayAlert("Error", "Username or Password might be wrong", "Okay");
                     return;
                 }
 
-                //Error User not found!
-                //Code to be added
+                //Go to HomePage
+                Application.Current.MainPage = new Home();
             });
         }
     }

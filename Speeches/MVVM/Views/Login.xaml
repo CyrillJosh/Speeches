@@ -43,7 +43,6 @@
                 Margin="0,35">
                 <!--#region Username-->
                 <Border
-                    x:Name="Border"
                     Stroke="{StaticResource Primary Color}"
                     StrokeThickness="1"
                     StrokeShape="RoundRectangle, 20"
@@ -62,6 +61,7 @@
                             </Image>
                             <Entry
                                 Text="{Binding User.Username}"
+                                WidthRequest="{Binding Source={RelativeSource AncestorType={x:Type HorizontalStackLayout}}, Path=Width}"
                                 VerticalOptions="Center"
                                 Placeholder="Username"
                                 TextColor="{StaticResource Font Dark}"/>
@@ -90,6 +90,7 @@
                             <Entry
                                 Text="{Binding User.Password}"
                                 IsPassword="{Binding IsChecked, Source={x:Reference ShowPassword}}"
+                                WidthRequest="{Binding Source={RelativeSource AncestorType={x:Type HorizontalStackLayout}}, Path=Width}"
                                 Placeholder="Password"
                                 VerticalOptions="Center"
                                 TextColor="{StaticResource Font Dark}"/>
@@ -110,7 +111,7 @@
                     <Label
                         VerticalTextAlignment="Center"
                         Text="Create an account"
-                        TextColor="{StaticResource Font Dark}"
+                        TextColor="{StaticResource Primary Color}"
                         Padding="0"
                         Margin="0"> 
                         <Label.GestureRecognizers>
@@ -121,10 +122,12 @@
                     <HorizontalStackLayout
                         HorizontalOptions="End">
                         <CheckBox
+                            Color="{StaticResource Secondary Color}"
                             x:Name="ShowPassword"
                             IsChecked="True"/>
                         <Label
-                            Text="Show Password"
+                            TextColor="Black"
+                            Text="Hide Password"
                             VerticalOptions="Center"/>
                     </HorizontalStackLayout>
                 </Grid>

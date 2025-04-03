@@ -76,8 +76,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AndroidResource Include="Resources\Images\logo.png" />
-	  <AndroidResource Include="Resources\Images\logo_gray.png" />
+	  <MauiAsset Include="Resources\Images\logo.png" />
+	  <MauiAsset Include="Resources\Images\logo_gray.png" />
 	  <AndroidResource Include="Resources\Raw\AboutAssets.txt" />
 	  <AndroidResource Include="Resources\Raw\speech.json" />
 	</ItemGroup>

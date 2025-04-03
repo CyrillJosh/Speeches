@@ -22,10 +22,18 @@ namespace Speeches.MVVM.ViewModels
             RegisterCommand = new Command(() =>
             {
                 //Validations
-                if(ConfirmPassword(User, confirmPassword))
+                if(CheckEmpty())
                 {
+                    Application.Current.MainPage.DisplayAlert("Error!", "Please fill all the fields", "Okay");
                     return;
                 }
+                if (!ConfirmPassword(User, confirmPassword))
+                {
+                    //ERROR not same
+                    Application.Current.MainPage.DisplayAlert("Error!","Password Does not Match", "Okay");
+                    return;
+                }
+
                 //Add the User
                 FakeDatabase.DB_Users.Add(User);
                 Application.Current.MainPage = new Home();
@@ -35,9 +43,22 @@ namespace Speeches.MVVM.ViewModels
         //Methods
         private bool ConfirmPassword(User user, string cp)
         {
+            //Checks if password and confirm password is the same
             if(User.Password == cp)
                 return true;
             return false;
+        }
+
+        private bool CheckEmpty()
+        {
+            //Checks if any fields is empty or null
+            if(string.IsNullOrEmpty(User.Password) ||
+               string.IsNullOrEmpty(User.Username) ||
+               string.IsNullOrEmpty(User.Password) ||
+               string.IsNullOrEmpty(confirmPassword))
+                    return true;
+            return false;
+
         }
     }
 }
