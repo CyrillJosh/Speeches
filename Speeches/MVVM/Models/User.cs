@@ -16,14 +16,11 @@ namespace Speeches.MVVM.Models
         private string _Id { get; set; }
         private string _Username { get; set; }
         private string _Password { get; set; }
-        private string _Email { get; set; }
-
 
         //Public Fields
         public string Id
         {
             get => _Id;
-
         }
         public string Username
         {
@@ -31,6 +28,7 @@ namespace Speeches.MVVM.Models
             set
             {
                 if (_Username != value) _Username = value;
+                IsEmpty(value, EUsername);
                 OnPropertyChanged();
             }
         }
@@ -40,18 +38,15 @@ namespace Speeches.MVVM.Models
             set
             {
                 if (_Password != value) _Password = value;
+                IsEmpty(value, EPassword);
                 OnPropertyChanged();
             }
         }
-        public string Email
-        {
-            get => _Email;
-            set
-            {
-                if (Email != value) _Email = value;
-                OnPropertyChanged();
-            }
-        }
+
+        //Error Fields
+        public string EId { get; set; }
+        public string EUsername { get; set; }
+        public string EPassword { get; set; }
 
         //Constructor
         public User()
@@ -63,5 +58,14 @@ namespace Speeches.MVVM.Models
         //PropertyChanged method
         public void OnPropertyChanged([CallerMemberName] string name = "") =>
        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
+        //Method
+        private void IsEmpty(string v, string e)
+        {
+            if (string.IsNullOrEmpty(v))
+                e = $"Please enter your {nameof(v)}";
+            else
+                e = "";
+        }
     }
 }

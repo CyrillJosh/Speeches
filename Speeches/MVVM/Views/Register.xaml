@@ -17,7 +17,6 @@
         <!--#endregion-->
     </ContentPage.Resources>
     <Grid>
-
         <VerticalStackLayout
                 Padding="20">
             <!--#region Title -->
