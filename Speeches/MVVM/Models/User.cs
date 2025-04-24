@@ -8,40 +8,12 @@ using System.Threading.Tasks;
 
 namespace Speeches.MVVM.Models
 {
-    public class User : INotifyPropertyChanged
+    public class User : Person
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        //Private Fields
-        private string _Id { get; set; }
-        private string _Username { get; set; }
-        private string _Password { get; set; }
-
         //Public Fields
-        public string Id
-        {
-            get => _Id;
-        }
-        public string Username
-        {
-            get => _Username;
-            set
-            {
-                if (_Username != value) _Username = value;
-                IsEmpty(value, EUsername);
-                OnPropertyChanged();
-            }
-        }
-        public string Password
-        {
-            get => _Password;
-            set
-            {
-                if (_Password != value) _Password = value;
-                IsEmpty(value, EPassword);
-                OnPropertyChanged();
-            }
-        }
+        public string Id { get; }
+        public string Username { get; set; }
+        public string Password { get; set; }
 
         //Error Fields
         public string EId { get; set; }
@@ -53,19 +25,6 @@ namespace Speeches.MVVM.Models
         {
             //Generate new Id
             _Id = Guid.NewGuid().ToString();
-        }
-
-        //PropertyChanged method
-        public void OnPropertyChanged([CallerMemberName] string name = "") =>
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-
-        //Method
-        private void IsEmpty(string v, string e)
-        {
-            if (string.IsNullOrEmpty(v))
-                e = $"Please enter your {nameof(v)}";
-            else
-                e = "";
         }
     }
 }

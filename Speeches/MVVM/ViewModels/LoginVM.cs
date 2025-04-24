@@ -9,10 +9,22 @@ using System.Windows.Input;
 
 namespace Speeches.MVVM.ViewModels
 {
-    public class LoginVM
+    public class LoginVM : INotifyPropertyChanged
     {
-        //Fields
-        public User User { get; set; } = new User();
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        //Private Fields
+        private User _User { get; set; } = new User();
+
+        //Public Fields
+        public User User
+        { 
+            get => _User 
+            set {
+                if(_User != value) _User = value;
+                OnPropertyChanged()
+            }
+        }
 
         //Commands
         public ICommand LoginCommand { get; set; }
@@ -48,5 +60,9 @@ namespace Speeches.MVVM.ViewModels
                 Application.Current.MainPage = new Home();
             });
         }
+
+          //PropertyChanged method
+        public void OnPropertyChanged([CallerMemberName] string name = "") =>
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
 }
